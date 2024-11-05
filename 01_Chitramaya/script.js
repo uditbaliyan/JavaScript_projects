@@ -4,17 +4,6 @@ const searchInput = document.getElementById('search-input'); // Add this line to
 
 let movies = { watched: [], toWatch: [] };
 
-// Load movies from movies.json
-async function loadMovies() {
-    try {
-        const response = await fetch('movies.json');
-        movies = await response.json();
-        displayMovies();
-    } catch (error) {
-        console.error('Error loading movies:', error);
-    }
-}
-
 // Filter movies based on search
 function filterMovies(movieList, searchTerm) {
     if (!searchTerm) return movieList;
@@ -31,6 +20,16 @@ async function fetchMovieImage(title) {
     return data.Poster ? data.Poster : 'https://via.placeholder.com/150'; // Default image if not found
 }
 
+async function loadMovies() {
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/uditbaliyan/JavaScript_projects/01_Chitramaya/main/movies.json');
+        movies = await response.json();
+        displayMovies();
+    } catch (error) {
+        console.error('Error loading movies:', error);
+    }
+}
+
 async function displayMovies() {
     // Clear existing lists
     watchedList.innerHTML = '';
@@ -38,7 +37,7 @@ async function displayMovies() {
 
     // Display watched movies
     for (const movie of movies.watched) {
-        const li = document.createElement('li');
+        const li = document.createElement('div'); // Changed to div
         li.className = 'movie-item';
 
         const img = document.createElement('img');
@@ -48,9 +47,9 @@ async function displayMovies() {
 
         const movieInfo = document.createElement('div');
         movieInfo.className = 'movie-info';
-        movieInfo.innerHTML = `${movie.title} (${movie.rating})`;
+        movieInfo.innerHTML = `${movie.title} (Rating: ${movie.rating})`;
 
-        // Append image and text to the list item
+        // Append image and text to the movie item
         li.appendChild(img);
         li.appendChild(movieInfo); // Move text below image
 
@@ -59,7 +58,7 @@ async function displayMovies() {
 
     // Display to-watch movies
     for (const movie of movies.toWatch) {
-        const li = document.createElement('li');
+        const li = document.createElement('div'); // Changed to div
         li.className = 'movie-item';
 
         const img = document.createElement('img');
@@ -69,15 +68,16 @@ async function displayMovies() {
 
         const movieInfo = document.createElement('div');
         movieInfo.className = 'movie-info';
-        movieInfo.innerHTML = `${movie.title} (${movie.rating})`;
+        movieInfo.innerHTML = `${movie.title} (Rating: ${movie.rating})`;
 
-        // Append image and text to the list item
+        // Append image and text to the movie item
         li.appendChild(img);
         li.appendChild(movieInfo); // Move text below image
 
         toWatchList.appendChild(li);
     }
 }
+
 
 // Event listener for search input
 searchInput.addEventListener('input', displayMovies);
