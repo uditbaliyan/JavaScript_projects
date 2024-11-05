@@ -1,0 +1,33 @@
+{
+    "watched": [
+      {
+        "title": "The Matrix",
+        "dateAdded": "2024-11-05T10:30:00Z",
+        "rating": "5/10",
+        "genre": "Sci-fi",
+        "director": "Wachowski Sisters",
+        "yearReleased": 1999,
+        "notes": "Classic movie"
+      },      
+      {
+        "title": "Inception",
+        "dateAdded": "2024-11-05T10:35:00Z",
+        "rating": "5/10",
+        "genre": "Sci-fi",
+        "director": "Christopher Nolan",
+        "yearReleased": 2010,
+        "notes": "Recommended by friend"
+      }
+    ],
+    "toWatch": [
+      {
+        "title": "Inception",
+        "dateAdded": "2024-11-05T10:35:00Z",
+        "rating": "5/10",
+        "genre": "Sci-fi",
+        "director": "Christopher Nolan",
+        "yearReleased": 2010,
+        "notes": "Recommended by friend"
+      }
+    ]
+}

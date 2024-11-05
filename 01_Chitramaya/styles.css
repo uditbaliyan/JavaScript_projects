@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.list-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.movie-item {
+    display: flex;
+    flex-direction: column; /* Change to column for vertical stacking */
+    align-items: center;    /* Center align items */
+    padding: 10px;
+    margin: 5px 0;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.search-bar {
+    margin: 20px 0;
+}
+
+.file-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.rating {
+    color: #f1c40f;
+}
+
+.date-added {
+    font-size: 0.8em;
+    color: #7f8c8d;
+}
