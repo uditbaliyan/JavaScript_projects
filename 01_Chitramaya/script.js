@@ -5,6 +5,21 @@ const addMovieButton = document.getElementById('add-movie-button');
 
 let movies = { watched: [], toWatch: [] };
 
+// Create movie item
+async function createMovieItem(movie, list) {
+    const movieItem = document.createElement('div');
+    movieItem.className = 'movie-item';
+    const img = document.createElement('img');
+    img.src = await fetchMovieImage(movie.title);
+    img.alt = movie.title;
+    img.style.width = '100px';
+    const info = document.createElement('div');
+    info.className = 'movie-info';
+    info.innerHTML = `${movie.title} (Rating: ${movie.rating})`;
+    movieItem.append(img, info);
+    list.appendChild(movieItem);
+}
+
 // Fetch and load movies from JSON
 async function loadMovies() {
     try {
