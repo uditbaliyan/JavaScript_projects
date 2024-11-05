@@ -2,10 +2,85 @@ const watchedList = document.getElementById('watched-list');
 const toWatchList = document.getElementById('to-watch-list');
 const searchInput = document.getElementById('search-input'); // Get the search input element
 
+
+
+const addMovieButton = document.getElementById('add-movie-button');
+
+addMovieButton.addEventListener('click', () => {
+    const title = document.getElementById('movie-title').value;
+    const rating = document.getElementById('movie-rating').value;
+    const genre = document.getElementById('movie-genre').value;
+    const director = document.getElementById('movie-director').value;
+    const yearReleased = parseInt(document.getElementById('movie-year').value, 10);
+    const notes = document.getElementById('movie-notes').value;
+
+    const newMovie = {
+        title: title,
+        dateAdded: new Date().toISOString(),
+        rating: rating,
+        genre: genre,
+        director: director,
+        yearReleased: yearReleased,
+        notes: notes
+    };
+
+    addMovie(newMovie);
+
+    // Clear the input fields
+    document.getElementById('movie-title').value = '';
+    document.getElementById('movie-rating').value = '';
+    document.getElementById('movie-genre').value = '';
+    document.getElementById('movie-director').value = '';
+    document.getElementById('movie-year').value = '';
+    document.getElementById('movie-notes').value = '';
+});
+
+
+
+
+
+
+
+
+
 let movies = {
     watched: [],
     toWatch: []
 };
+
+
+// Function to add a new movie
+function addMovie(newMovie) {
+    // Check if the movie already exists in the watched list
+    const exists = movies.watched.some(movie => movie.title.toLowerCase() === newMovie.title.toLowerCase());
+    
+    if (!exists) {
+        // Add the new movie to the watched list
+        movies.watched.push(newMovie);
+        // Refresh the movie display
+        displayMovies();
+    } else {
+        alert("Movie already exists in the watched list.");
+    }
+}
+
+// Example usage: Call this function when you want to add a new movie
+const newMovie = {
+    title: "Interstellar",
+    dateAdded: new Date().toISOString(), // Current date and time
+    rating: "9/10",
+    genre: "Sci-fi",
+    director: "Christopher Nolan",
+    yearReleased: 2014,
+    notes: "Mind-blowing visuals"
+};
+
+// Add the new movie
+addMovie(newMovie);
+
+
+
+
 
 // Fetch movies from JSON file
 async function loadMovies() {
