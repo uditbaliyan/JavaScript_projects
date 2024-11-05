@@ -13,12 +13,14 @@ function filterMovies(movieList, searchTerm) {
 }
 
 // Fetch movie image from OMDb API
+// Fetch movie image from OMDb API
 async function fetchMovieImage(title) {
-    const apiKey = '68922fd8'; // Replace with your OMDb API key
-    const response = await fetch(`http://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
+    const apiKey = ''; // Replace with your OMDb API key
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
     const data = await response.json();
     return data.Poster ? data.Poster : 'https://via.placeholder.com/150'; // Default image if not found
 }
+
 
 async function loadMovies() {
     try {
