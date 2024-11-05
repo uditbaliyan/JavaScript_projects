@@ -1,6 +1,5 @@
 
-Original file line number	Original file line	Diff line number	Diff line change
-@@ -1,86 +1,101 @@
+
 const watchedList = document.getElementById('watched-list');
 const toWatchList = document.getElementById('to-watch-list');
 const searchInput = document.getElementById('search-input');
