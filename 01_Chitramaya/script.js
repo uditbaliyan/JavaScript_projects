@@ -69,7 +69,7 @@ async function displayMovies() {
 
         const movieInfo = document.createElement('div');
         movieInfo.className = 'movie-info';
-        movieInfo.innerHTML = `${movie.title} (Rating: ${movie.rating})`;
+        movieInfo.innerHTML = `${movie.title} (${movie.rating})`;
 
         // Append image and text to the list item
         li.appendChild(img);
