@@ -53,20 +53,26 @@ button:hover {
     border-radius: 4px;
 }
 
+.movie-list {
+    display: flex;                   /* Use flexbox for movie items */
+    flex-wrap: wrap;                /* Allow wrapping to the next line */
+    gap: 15px;                      /* Space between movie items */
+}
+
 .movie-item {
     display: flex;
-    flex-direction: column; /* Change to column for vertical stacking */
-    align-items: center;    /* Center align items */
+    flex-direction: column;         /* Stack image and text vertically */
+    align-items: center;            /* Center align items */
     padding: 10px;
-    margin: 5px 0;
+    width: 150px;                   /* Fixed width for each movie item */
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
 .movie-info {
     flex: 1;
+    text-align: center;             /* Center text below the image */
 }
 
 .movie-actions {
