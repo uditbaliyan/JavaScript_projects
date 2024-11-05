@@ -7,39 +7,18 @@ let movies = {
     toWatch: []
 };
 
-// Sample movie data
-const a = {
-    "watched": [
-        {
-            "title": "The Matrix",
-            "dateAdded": "2024-11-05T10:30:00Z",
-            "rating": "5/10",
-            "genre": "Sci-fi",
-            "director": "Wachowski Sisters",
-            "yearReleased": 1999,
-            "notes": "Classic movie"
-        },
-        {
-            "title": "Inception",
-            "dateAdded": "2024-11-05T10:35:00Z",
-            "rating": "5/10",
-            "genre": "Sci-fi",
-            "director": "Christopher Nolan",
-            "yearReleased": 2010,
-            "notes": "Recommended by friend"
+// Fetch movies from JSON file
+async function loadMovies() {
+    try {
+        const response = await fetch('movies.json'); // Fetch the JSON file
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    ],
-    "toWatch": [
-        {
-            "title": "Inception",
-            "dateAdded": "2024-11-05T10:35:00Z",
-            "rating": "5/10",
-            "genre": "Sci-fi",
-            "director": "Christopher Nolan",
-            "yearReleased": 2010,
-            "notes": "Recommended by friend"
-        }
-    ]
+        movies = await response.json(); // Parse JSON data
+        displayMovies(); // Display the movies after loading them
+    } catch (error) {
+        console.error('Error loading movies:', error);
+    }
 }
 
 // Filter movies based on search
@@ -52,16 +31,10 @@ function filterMovies(movieList, searchTerm) {
 
 // Fetch movie image from OMDb API
 async function fetchMovieImage(title) {
-    const apiKey = '68922fd8'; // Replace with your OMDb API key
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
+    const xxxxxxx = '68922fd8'; // Replace with your OMDb API key
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${xxxxxxx}`);
     const data = await response.json();
     return data.Poster ? data.Poster : 'https://via.placeholder.com/150'; // Default image if not found
-}
-
-function loadMovies() {
-    // Directly assign sample data to movies
-    movies = a;
-    displayMovies();
 }
 
 async function displayMovies() {
