@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch and load movies from JSON
     async function loadMovies() {
         try {
-            const response = await fetch('movies.json');
+            const response = await fetch('movies.json'); // Adjust path if needed
             if (!response.ok) throw new Error('Network response was not ok');
             movies = await response.json();
             displayMovies();
@@ -53,37 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Create a movie item and append to the list
-    async function createMovieItem(movie, listElement) {
-        const item = document.createElement('li');
-        const posterUrl = await fetchMovieImage(movie.title);
-        item.innerHTML = `
-            <img src="${posterUrl}" alt="${movie.title}" width="50">
-            <span>${movie.title} (${movie.yearReleased})</span>
-        `;
-        listElement.appendChild(item);
-    }
 
-    // Add a new movie
-    addMovieButton.addEventListener('click', () => {
-        const newMovie = {
-            title: document.getElementById('movie-title').value,
-            dateAdded: new Date().toISOString(),
-            rating: document.getElementById('movie-rating').value,
-            genre: document.getElementById('movie-genre').value,
-            director: document.getElementById('movie-director').value,
-            yearReleased: parseInt(document.getElementById('movie-year').value, 10),
-            notes: document.getElementById('movie-notes').value
-        };
-
-        if (!movies.watched.some(movie => movie.title.toLowerCase() === newMovie.title.toLowerCase())) {
-            movies.watched.push(newMovie);
-            displayMovies();
-            clearInputs();
-        } else {
-            alert("Movie already exists in the watched list.");
-        }
-    });
 
     // Clear input fields
     function clearInputs() {
