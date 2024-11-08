@@ -5,24 +5,65 @@ async function fetchMovies() {
     displayMovies(movieData.toWatch, 'toWatchMovies');
 }
 
-
-async function displayMovies(movies, elementId) {
+function displayMovies(movies, elementId) {
     const container = document.getElementById(elementId);
     container.innerHTML = ''; // Clear previous content
+
     for (const movie of movies) {
-        const movieInfo = await fetchMovieInfo(movie.title);
-        if (movieInfo) {
-            const movieElement = document.createElement('div');
-            movieElement.classList.add('movie');
-            movieElement.innerHTML = `
-                <img src="${movieInfo.Poster}" alt="${movieInfo.Title} Poster">
-                <h3><a href="https://en.wikipedia.org/wiki/${movie.title}" target="_blank">${movieInfo.Title}</a></h3>
-                <p>${movieInfo.Plot}</p>
-            `;
-            container.appendChild(movieElement);
-        }
+        const movieElement = document.createElement('div');
+        movieElement.classList.add('movie');
+        movieElement.innerHTML = `
+            <h3><a href="${movie.wiki}" target="_blank">${movie.title}</a></h3>
+            <p class="author">Directed by: ${movie.author}</p>
+            <button onclick="showDetails('${movie.title}', this)">View Details</button>
+            <div class="details" style="display:none;"></div>
+        `;
+
+        container.appendChild(movieElement);
     }
 }
+
+async function showDetails(title, button) {
+    let overlay = document.querySelector('.overlay');
+    
+    // Create overlay if it doesn't exist
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+    }
+    
+    const detailsContainer = document.createElement('div');
+    detailsContainer.className = 'details-container';
+
+    // Fetch movie information and display it in the overlay
+    if (overlay.style.display === 'none' || !overlay.style.display) {
+        const movieInfo = await fetchMovieInfo(title);
+        if (movieInfo) {
+            detailsContainer.innerHTML = `
+                <img src="${movieInfo.Poster}" alt="${movieInfo.Title} Poster">
+                <p>${movieInfo.Plot}</p>
+            `;
+            overlay.appendChild(detailsContainer);
+            overlay.style.display = 'flex';
+            button.textContent = "Hide Details";
+        }
+    } else {
+        overlay.style.display = 'none';
+        overlay.innerHTML = '';
+        button.textContent = "View Details";
+    }
+
+    // Hide overlay when clicking outside the detailsContainer
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.style.display = 'none';
+            overlay.innerHTML = '';
+            button.textContent = "View Details";
+        }
+    });
+}
+
 
 async function fetchMovieInfo(title) {
     const apiKey = '68922fd8'; // Replace with your OMDb API key

@@ -1,0 +1,10 @@
+{
+    "read": [
+        { "title": "To Kill a Mockingbird", "author": "Harper Lee", "wiki": "https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird" },
+        { "title": "1984", "author": "George Orwell", "wiki": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four" }
+    ],
+    "toRead": [
+        { "title": "The Catcher in the Rye", "author": "J.D. Salinger", "wiki": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye" },
+        { "title": "Moby-Dick", "author": "Herman Melville", "wiki": "https://en.wikipedia.org/wiki/Moby-Dick" }
+    ]
+}
