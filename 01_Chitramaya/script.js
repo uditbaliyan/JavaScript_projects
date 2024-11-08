@@ -1,9 +1,10 @@
 async function fetchMovies() {
-    const response = await fetch('movies.json');
+    const response = await fetch('https://raw.githubusercontent.com/uditbaliyan/JavaScript_projects/main/01_Chitramaya/movies.json');
     const movieData = await response.json();
     displayMovies(movieData.watched, 'watchedMovies');
     displayMovies(movieData.toWatch, 'toWatchMovies');
 }
+
 
 async function displayMovies(movies, elementId) {
     const container = document.getElementById(elementId);
@@ -25,7 +26,6 @@ async function displayMovies(movies, elementId) {
 
 async function fetchMovieInfo(title) {
     const apiKey = '68922fd8'; // Replace with your OMDb API key
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
     const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
     const data = await response.json();
     return data.Response === 'True' ? data : null;
