@@ -2,7 +2,7 @@ async function fetchMovies() {
     const response = await fetch('https://raw.githubusercontent.com/uditbaliyan/JavaScript_projects/main/01_Chitramaya/movies.json');
     const movieData = await response.json();
     displayMovies(movieData.watched, 'watchedMovies');
-    displayMovies(movieData.toWatch, 'toWatchMovies');
+    displayMovies(movieData.watch_list, 'toWatchMovies');
 }
 
 function displayMovies(movies, elementId) {
