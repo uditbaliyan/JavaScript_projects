@@ -7,23 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Chitramaya</h1>
-        
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search movies..." aria-label="Search movies">
-        </div>
-
-        <div class="list-section">
-            <h2>Watched Movies</h2>
-            <div id="watched-list" class="movie-list"></div> <!-- Changed from <ul> to <div> -->
-        </div>
-        
-        <div class="list-section">
-            <h2>Want to Watch Movies</h2>
-            <div id="to-watch-list" class="movie-list"></div> <!-- Changed from <ul> to <div> -->
-        </div>
-    </div>
+        <h1>Movies I've Watched</h1>
+    </header>
+    <main>
+        <section id="watchedMovies" class="movies-container"></section>
+        <center>
+        <h1>Movies I Want to Watch</h1>
+        </center>
+        <section id="toWatchMovies" class="movies-container"></section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
